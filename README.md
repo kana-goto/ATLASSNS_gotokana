@@ -1,0 +1,1 @@
+# ATLASSNS_gotokana
