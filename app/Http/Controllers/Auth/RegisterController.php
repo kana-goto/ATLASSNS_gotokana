@@ -79,9 +79,10 @@ class RegisterController extends Controller
         if($request->isMethod('post')){
             $data = $request->input();
             $this->validator($data);
-            if($data->fails()){
-            return redirect('/register')->withErrors($data)->withInput();
-            }
+
+            // if($data->fails()){
+            // return redirect('/register')->withErrors($data)->withInput();
+            // }
             $this->create($data);
             return redirect('added');
         }

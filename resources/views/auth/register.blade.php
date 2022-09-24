@@ -36,6 +36,6 @@
 <p><a href="/login">ログイン画面へ戻る</a></p>
 
 {!! Form::close() !!}
-l
+
 
 @endsection

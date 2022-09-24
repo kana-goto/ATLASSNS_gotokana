@@ -3,7 +3,14 @@
 @section('content')
 
 <div id="clear">
-  <p>〇〇さん</p>
+  <p>
+    <?php
+    session_start();
+    $_SESSION['username'] = '〇〇';
+    echo $_SESSION['username'].'さん';
+    unset($_SESSION['username']);
+    ?>
+  </p>
   <p>ようこそ！AtlasSNSへ！</p>
   <p>ユーザー登録が完了しました。</p>
   <p>早速ログインをしてみましょう。</p>
