@@ -3,14 +3,9 @@
 @section('content')
 
 <div id="clear">
-  <p>
-    <?php
-    session_start();
-    $_SESSION['username'] = '〇〇';
-    echo $_SESSION['username'].'さん';
-    unset($_SESSION['username']);
-    ?>
-  </p>
+  @if (Session::has('username'))
+    <p>{{ session('username') }}さん</p>
+@endif
   <p>ようこそ！AtlasSNSへ！</p>
   <p>ユーザー登録が完了しました。</p>
   <p>早速ログインをしてみましょう。</p>
