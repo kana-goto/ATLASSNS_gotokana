@@ -22,15 +22,7 @@ class PostsController extends Controller
             'user_id' => $user_id
         ]);
 
-        // $username = Auth::username();
-        // \DB::table('posts')->insert([
-        //     'username' => $user_id
-        // ]);
 
-        // $username = Auth::username();
-        // Post::insert([
-        //     $username => $user_id,
-        //     ]);
 
         return redirect('/top');
 
