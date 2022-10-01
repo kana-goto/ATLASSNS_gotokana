@@ -84,6 +84,7 @@ class RegisterController extends Controller
             return redirect('/register')->withErrors($validator)->withInput();
             }
 
+
             $this->create($data);
             $username = $request->input('username');
             return redirect('added')->with('username',$username);
