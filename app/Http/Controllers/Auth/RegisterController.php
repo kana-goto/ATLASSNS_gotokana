@@ -80,12 +80,10 @@ class RegisterController extends Controller
             $data = $request->input();
             $validator=$this->validator($data);
 
-<<<<<<< HEAD
             if($validator->fails()){
             return redirect('/register')->withErrors($validator)->withInput();
             }
-=======
->>>>>>> main3
+
 
 
             $this->create($data);

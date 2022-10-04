@@ -22,10 +22,30 @@ class PostsController extends Controller
             'user_id' => $user_id
         ]);
 
-
-
         return redirect('/top');
 
+    }
+
+    public function update(Request $request)
+    {
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
+        \DB::table('posts')
+        ->where('id', $id)
+        ->update(
+             ['post' => $up_post]
+              );
+
+        return redirect('/top');
+    }
+
+    public function delete($id)
+    {
+        \DB::table('posts')
+        ->where('id', $id)
+        ->delete();
+
+        return redirect('/top');
     }
 
 }

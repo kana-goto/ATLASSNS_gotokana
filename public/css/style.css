@@ -9,6 +9,10 @@ header {
     background: #186AC9;
 }
 
+.nav-wrapper {
+    display: none;
+}
+
 /* main content */
 #row {
     display: flex;
