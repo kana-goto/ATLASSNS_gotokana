@@ -8,11 +8,25 @@ use App\User;
 
 class UsersController extends Controller
 {
-    //
-    public function profile(){
+    public function show(){
         $user = Auth::user();
         return view('users.profile', ['user' => $user]);
     }
+
+    public function profile(Request $request){
+        $user = Auth::user();
+        $user->username = $request->input('username');
+        $user->mail = $request->input('mail');
+        $user->password = $request->input('password');
+        $user->bio = $request->input('bio');
+        $user->images = $request->input('images');
+        $user->save();
+
+        return redirect('/top');
+    }
+
+
+
 
     public function search(Request $request){
         $users = User::all();

@@ -18,26 +18,24 @@
 
 <div class="form-group">
   {{Form::label('password','password')}}
-  {{Form::password('inputPassword', ['class' => 'form-control','id' => 'inputPassword','placeholder' => 'パスワード'])}}
+  {{Form::password('password', ['class' => 'form-control','placeholder' => 'パスワード'])}}
   <span class="text-danger">{{$errors->first('password')}}</span>
 </div>
 
 <div class="form-group">
   {{Form::label('password','password confirm')}}
-  {{Form::password('password', ['class' => 'form-control', 'id' =>'password'])}}
+  {{Form::password('password', ['class' => 'form-control','placeholder' => 'パスワード確認'])}}
   <span class="text-danger">{{$errors->first('password')}}</span>
 </div>
 
 <div class="form-group">
   {{Form::label('bio','bio')}}
-  {{Form::text('bio', null, ['class' => 'form-control', 'id' =>'username'])}}
-  <span class="text-danger">{{$errors->first('name')}}</span>
+  {{Form::text('bio', $user->bio, ['class' => 'form-control'])}}
 </div>
 
 <div class="form-group">
   {{Form::label('images','icon image')}}
-  {{Form::text('images', null, ['class' => 'form-control', 'id' =>'username'])}}
-  <span class="text-danger">{{$errors->first('name')}}</span>
+  {{Form::file('images', ['class' => 'form-control'])}}
 </div>
 
 {{ Form::submit('更新') }}

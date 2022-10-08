@@ -27,7 +27,7 @@
         <h1><a href="/top"><img src="images/atlas.png"></a></h1>
             <div id="">
                 <div class="menu-trigger">
-                    <p><?php $user = Auth::user(); ?>{{ $user->username }}  さん<i class="fa fa-angle-down"></i><img src="images/icon1.png"></p>
+                    <p><?php $user = Auth::user(); ?>{{ $user->username }}  さん<i class="fa fa-angle-down"></i><img src="images/{{ $user->images }}"></p>
                 <div>
                 <div class="nav-wrapper">
                   <ul>
