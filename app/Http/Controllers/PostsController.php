@@ -8,6 +8,14 @@ use App\Http\Controllers\Auth;
 
 class PostsController extends Controller
 {
+    // protected function validator(array $post)
+    // {
+    //     return Validator::make($post, [
+    //         'post' => 'required|string|min:1|max:200',
+    //     ]);
+    // }
+
+
     public function index(){
         $list = \DB::table('posts')->get();
         return view('posts.index',['list'=>$list]);
@@ -16,6 +24,12 @@ class PostsController extends Controller
     public function create(Request $request)
     {
         $post = $request->input('newPost');
+        // $validator=$this->validator($post);
+        // if($validator->fails()){
+        //     return redirect('/top')->withErrors($validator)->withInput();
+        // }
+
+
         $user_id = auth()->id();
         \DB::table('posts')->insert([
             'post' => $post,
