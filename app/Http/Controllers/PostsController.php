@@ -3,17 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PostsController extends Controller
 {
-    // protected function validator(array $post)
-    // {
-    //     return Validator::make($post, [
-    //         'post' => 'required|string|min:1|max:200',
-    //     ]);
-    // }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'newPost' => 'required|string|min:1|max:200',
+            'upPost' => 'required|string|min:1|max:200',
+        ]);
+    }
 
 
     public function index(){
@@ -23,11 +24,13 @@ class PostsController extends Controller
 
     public function create(Request $request)
     {
+        $data = $request->all();
         $post = $request->input('newPost');
-        // $validator=$this->validator($post);
-        // if($validator->fails()){
-        //     return redirect('/top')->withErrors($validator)->withInput();
-        // }
+
+        $validator=$this->validator($data);
+        if($validator->fails()){
+            return redirect('/top')->withErrors($validator)->withInput();
+        }
 
 
         $user_id = auth()->id();
@@ -42,8 +45,15 @@ class PostsController extends Controller
 
     public function update(Request $request)
     {
+        $data = $request->all();
         $id = $request->input('id');
         $up_post = $request->input('upPost');
+
+         $validator=$this->validator($data);
+        if($validator->fails()){
+            return redirect('/top')->withErrors($validator)->withInput();
+        }
+
         \DB::table('posts')
         ->where('id', $id)
         ->update(
