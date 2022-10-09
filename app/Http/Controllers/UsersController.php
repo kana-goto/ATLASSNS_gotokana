@@ -4,22 +4,43 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 use App\User;
 
 class UsersController extends Controller
 {
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'username' => 'required|string|min:2|max:12',
+            'mail' => ['required', 'string', 'email', 'min:5', 'max:40', Rule::unique('users')->ignore(Auth::id())],
+            'password' => 'nullable|string|alpha_num|min:8|max:20|confirmed',
+            'bio' => 'string|max:150',
+            'images' => 'image|alpha_num',
+        ]);
+    }
+
     public function show(){
         $user = Auth::user();
         return view('users.profile', ['user' => $user]);
     }
 
     public function profile(Request $request){
+        $data = $request->all();
+
         $user = Auth::user();
         $user->username = $request->input('username');
         $user->mail = $request->input('mail');
-        $user->password = $request->input('password');
+        $user->password = bcrypt($request->input('password'));
         $user->bio = $request->input('bio');
         $user->images = $request->input('images');
+
+        $validator=$this->validator($data);
+        if($validator->fails()){
+            return redirect('/profile')->withErrors($validator)->withInput();
+        }
+
         $user->save();
 
         return redirect('/top');
