@@ -15,8 +15,8 @@ class UsersController extends Controller
         return Validator::make($data, [
             'username' => 'required|string|min:2|max:12',
             'mail' => ['required', 'string', 'email', 'min:5', 'max:40', Rule::unique('users')->ignore(Auth::id())],
-            'password' => 'nullable|string|alpha_num|min:8|max:20|confirmed',
-            'bio' => 'string|max:150',
+            'password' => 'string|alpha_num|min:8|max:20|confirmed',
+            'bio' => 'nullable|string|max:150',
             'images' => 'image',
         ]);
     }
@@ -34,7 +34,12 @@ class UsersController extends Controller
         $user->mail = $request->input('mail');
         $user->password = bcrypt($request->input('password'));
         $user->bio = $request->input('bio');
-        $user->images = $request->input('images');
+
+
+        $originalImg = $request->images;
+        $filePath = $originalImg->store('public');
+        $user->images = str_replace('public/', '', $filePath);
+
 
         $validator=$this->validator($data);
         if($validator->fails()){
