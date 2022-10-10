@@ -21,14 +21,14 @@
 
 <div class="form-group">
 {{ Form::label('パスワード') }}
-{{ Form::text('password',null,['class' => 'input']) }}
+{{ Form::password('password',null,['class' => 'input']) }}
 @if ($errors->has('password'))<li>{{$errors->first('password')}}</li>@endif
 </div>
 
 <div class="form-group">
 {{ Form::label('パスワード確認') }}
-{{ Form::text('password-confirm',null,['class' => 'input']) }}
-@if ($errors->has('password'))<li>{{$errors->first('password')}}</li>@endif
+{{ Form::password('password_confirmation',null,['class' => 'input']) }}
+@if ($errors->has('password'))<li>{{$errors->first('password_confirmation')}}</li>@endif
 </div>
 
 {{ Form::submit('登録') }}

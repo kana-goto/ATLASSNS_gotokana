@@ -17,7 +17,7 @@ class UsersController extends Controller
             'mail' => ['required', 'string', 'email', 'min:5', 'max:40', Rule::unique('users')->ignore(Auth::id())],
             'password' => 'nullable|string|alpha_num|min:8|max:20|confirmed',
             'bio' => 'string|max:150',
-            'images' => 'image|alpha_num',
+            'images' => 'image',
         ]);
     }
 

@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open(['url' => '/profile']) !!}
+{!! Form::open(['url' => '/profile','method' => 'post', 'files' => true]) !!}
 
 <div class="form-group">
   {{Form::label('username','user name')}}
@@ -24,8 +24,8 @@
 
 <div class="form-group">
   {{Form::label('password','password confirm')}}
-  {{Form::password('password-confirm', ['class' => 'form-control','placeholder' => 'パスワード確認'])}}
-  <span class="text-danger">{{$errors->first('password')}}</span>
+  {{Form::password('password_confirmation', ['class' => 'form-control','placeholder' => 'パスワード確認'])}}
+  <span class="text-danger">{{$errors->first('password_confirmation')}}</span>
 </div>
 
 <div class="form-group">
@@ -36,7 +36,7 @@
 
 <div class="form-group">
   {{Form::label('images','icon image')}}
-  {{Form::file('images', ['class' => 'form-control'])}}
+  {{Form::file('images', ['class' => 'custom-file-input'])}}
   <span class="text-danger">{{$errors->first('images')}}</span>
 </div>
 
