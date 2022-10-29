@@ -46,6 +46,9 @@ Route::post('/search','UsersController@search');
 Route::get('/followList','FollowsController@followList');
 Route::get('/followerList','FollowsController@followerList');
 
+Route::post('/users/{user}/follow','FollowsController@follow');
+Route::post('/users/{user}/unfollow','FollowsController@unfollow');
+
 Route::get('/logout', 'Auth\LoginController@logout');
 
 });
