@@ -27,7 +27,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // フォローしているユーザーを取得
+    // フォロワーを取得
     public function followUsers()
     {
         return $this->belongsToMany(
@@ -38,7 +38,7 @@ class User extends Authenticatable
         );
     }
 
-    // フォロワーを取得
+    // フォローしているユーザーを取得
     public function follows()
     {
         return $this->belongsToMany(

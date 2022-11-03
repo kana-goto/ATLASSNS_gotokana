@@ -3,46 +3,36 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Follow;
 
 class FollowsController extends Controller
 {
     public function followList(){
-        return view('follows.followList');
+        $users = User::all();
+
+        return view('follows.followList')->with('users', $users);
     }
     public function followerList(){
-        return view('follows.followerList');
+        $users = User::all();
+        return view('follows.followerList')->with('users', $users);
     }
 
-    // public function follow(Request $request) {
-    //     $following_id = Auth::user()->id;
-    //     $followed_id = $request->input('id');
-
-    //     \DB::table('follows')
-    //     ->insert([
-    //         'followed_id' => $following_id,
-    //         'follow_id' => $followed_id
-    //         ]);
-
-    //         return redirect('/search');
-
-    // }
 
     public function follow(User $user) {
-        $follow = FollowUser::create([
+        $follow = Follow::create([
             'following_id' => \Auth::user()->id,
             'followed_id' => $user->id,
         ]);
-        $followCount = count(FollowUser::where('followed_id', $user->id)->get());
 
-        return response()->json(['followCount' => $followCount]);
+        return redirect('/search');
     }
 
     public function unfollow(User $user) {
-        $follow = FollowUser::where('following_user_id', \Auth::user()->id)->where('followed_user_id', $user->id)->first();
+        $follow = Follow::where('following_id', \Auth::user()->id)->where('followed_id', $user->id)->first();
         $follow->delete();
-        $followCount = count(FollowUser::where('followed_user_id', $user->id)->get());
 
-        return response()->json(['followCount' => $followCount]);
+        return redirect('/search');
     }
 
 }
