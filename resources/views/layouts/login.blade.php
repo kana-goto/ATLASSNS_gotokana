@@ -48,12 +48,12 @@
                 <p><?php $user = Auth::user(); ?>{{ $user->username }}さんの</p>
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p>{{ Auth::user()->follows()->get()->count() }}名</p>
                 </div>
                 <p class="btn"><a href="/followList">フォローリスト</a></p>
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <p>{{ Auth::user()->followUsers()->get()->count() }}名</p>
                 </div>
                 <p class="btn"><a href="/followerList">フォロワーリスト</a></p>
             </div>
