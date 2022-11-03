@@ -4,11 +4,12 @@
 Follow List
 
 <table>
-@foreach($users as $user)
-<img src="/storage/{{ $user->images }}">
+@foreach($posts as $post)
+<img src="/storage/{{ $post->user->images }}">
 <tr>
-  <td><img src="/storage/{{ $user->images }}">
-  {{$user->username}}
+  <td><img src="/storage/{{ $post->user->images }}">
+  {{$post->user->username}}
+  {{ $post->post }}
 
 
 

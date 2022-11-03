@@ -5,17 +5,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Follow;
+use App\Post;
+use Auth;
 
 class FollowsController extends Controller
 {
     public function followList(){
-        $users = User::all();
+        // $users = User::all()->follows()->pluck('followed_id');
+        // return view('follows.followList')->with('users', $users);
+        $following_id = Auth::user()->follows()->pluck('followed_id');
+        $posts = Post::with('user')->whereIn('user_id', $following_id)->get();
 
-        return view('follows.followList')->with('users', $users);
+        return view('follows.followList', compact('posts'));
+
+
     }
     public function followerList(){
-        $users = User::all();
-        return view('follows.followerList')->with('users', $users);
+        // $users = User::all();
+        // return view('follows.followerList')->with('users', $users);
+
+        $followed_id = Auth::user()->followUsers()->pluck('following_id');
+        $posts = Post::with('user')->whereIn('user_id', $followed_id)->get();
+
+        return view('follows.followerList', compact('posts'));
+
     }
 
 
