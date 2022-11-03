@@ -5,19 +5,20 @@
  <div class="form-group">
    {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください。']) !!}
  </div>
- <button type="submit" class="btn btn-success pull-right">追加ボタン</button>
+ <button type="submit" class="btn btn-success pull-right">投稿ボタン</button>
  {!! Form::close() !!}
  <table>
- @foreach ($list as $list)
-            <!-- <tr>
-                <td>{{ $list->user_id }}</td>
-                <td>{{ $list->post }}</td>
-                <td>{{ $list->created_at }}</td>
-            </tr> -->
+ @foreach ($posts as $post)
+            <tr>
+                <td><img src="/storage/{{ $post->user->images }}"></td>
+                <td>{{ $post->user->username}}</td>
+                <td>{{ $post->post }}</td>
+                <td>{{ $post->created_at }}</td>
+            </tr>
             <div class="content">
               <!-- 投稿の編集ボタン -->
-              <a class="js-modal-open" href="/top" post="{{ $list->post }}" post_id="{{ $list->user_id }}">編集</a>
-              <a class="delate" href="/post/{{$list->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
+              <a class="js-modal-open" href="/top" post="{{ $post->post }}" post_id="{{ $post->user_id }}">編集</a>
+              <a class="delate" href="/post/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
             </div>
  @endforeach
 </table>

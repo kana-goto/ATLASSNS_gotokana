@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Controllers\Auth;
+use App\Post;
+use App\User;
+use Auth;
 use Illuminate\Support\Facades\Validator;
 
 class PostsController extends Controller
@@ -16,21 +18,28 @@ class PostsController extends Controller
         ]);
     }
 
-
     public function index(){
-        $list = \DB::table('posts')->get();
-        return view('posts.index',['list'=>$list]);
+        $following_id = Auth::user()->follows()->pluck('followed_id');
+        $posts = Post::with('user')->whereIn('user_id', $following_id)->get();
+
+        return view('posts.index', compact('posts'));
     }
+
+
+    // public function index(){
+    //     $list = \DB::table('posts')->get();
+    //     return view('posts.index',['list'=>$list]);
+    // }
 
     public function create(Request $request)
     {
         $data = $request->all();
         $post = $request->input('newPost');
 
-        $validator=$this->validator($data);
-        if($validator->fails()){
-            return redirect('/top')->withErrors($validator)->withInput();
-        }
+        // $validator=$this->validator($data);
+        // if($validator->fails()){
+        //     return redirect('/top')->withErrors($validator)->withInput();
+        // }
 
 
         $user_id = auth()->id();
@@ -49,10 +58,10 @@ class PostsController extends Controller
         $id = $request->input('id');
         $up_post = $request->input('upPost');
 
-         $validator=$this->validator($data);
-        if($validator->fails()){
-            return redirect('/top')->withErrors($validator)->withInput();
-        }
+        //  $validator=$this->validator($data);
+        // if($validator->fails()){
+        //     return redirect('/top')->withErrors($validator)->withInput();
+        // }
 
         \DB::table('posts')
         ->where('id', $id)
