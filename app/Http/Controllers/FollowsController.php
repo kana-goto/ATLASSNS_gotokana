@@ -33,19 +33,44 @@ class FollowsController extends Controller
 
 
     public function follow(User $user) {
-        $follow = Follow::create([
-            'following_id' => \Auth::user()->id,
-            'followed_id' => $user->id,
-        ]);
+        // $follow = Follow::create([
+        //     'following_id' => \Auth::user()->id,
+        //     'followed_id' => $user->id,
+        // ]);
 
-        return redirect('/search');
+        // return redirect('/search');
+
+        $follower = auth()->user();
+        // フォローしているか
+        $is_following = $follower->isFollowing($user->id);
+        if(!$is_following) {
+            // フォローしていなければフォローする
+            $follower->follow($user->id);
+            return back();
+        }
     }
 
     public function unfollow(User $user) {
-        $follow = Follow::where('following_id', \Auth::user()->id)->where('followed_id', $user->id)->first();
-        $follow->delete();
+        // $follow = Follow::where('following_id', \Auth::user()->id)->where('followed_id', $user->id)->first();
+        // $follow->delete();
 
-        return redirect('/search');
+        // return redirect('/search');
+
+        $follower = auth()->user();
+        // フォローしているか
+        $is_following = $follower->isFollowing($user->id);
+        if($is_following) {
+            // フォローしていればフォローを解除する
+            $follower->unfollow($user->id);
+            return back();
+        }
+    }
+
+    public function profile($id){
+        // $data = Auth::user($id);
+
+        $posts = Post::with('user')->where('user_id', $id)->get();
+        return view('users.user_profile', compact('posts'));
     }
 
 }

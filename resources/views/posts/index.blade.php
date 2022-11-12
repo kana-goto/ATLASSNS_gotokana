@@ -13,7 +13,7 @@
                 <td><img src="/storage/{{ $post->user->images }}"></td>
                 <td>{{ $post->user->username}}</td>
                 <td>{{ $post->post }}</td>
-                <td>{{ $post->created_at }}</td>
+                <td>{{ $post->updated_at }}</td>
             </tr>
             <div class="content">
               <!-- 投稿の編集ボタン -->
