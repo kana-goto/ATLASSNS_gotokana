@@ -24,8 +24,8 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a href="/top"><img src="images/atlas.png"></a></h1>
-            <div id="">
+        <h1><a href="/top"><img src="images/atlas.png" class = "atlas"></a></h1>
+            <div id="memu">
                 <div class="menu-trigger">
                     <p><?php $user = Auth::user(); ?>{{ $user->username }}  さん<i class="fa fa-angle-down"></i><img src="/storage/{{ $user->images }}"></p>
                 <div>

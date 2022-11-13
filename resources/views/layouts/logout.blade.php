@@ -22,11 +22,12 @@
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
+
   <header>
-    <h1><img src="images/atlas.png"></h1>
-    <p>Social Network Service</p>
+    <h1><img src="images/atlas.png" class = "atlas"></h1>
+    <p class = "title">Social Network Service</p>
   </header>
-  <div id="container">
+  <div id = "container">
     @yield('content')
   </div>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

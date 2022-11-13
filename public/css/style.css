@@ -2,6 +2,8 @@
 
 html {}
 
+
+
 body {}
 
 /* header */
@@ -11,6 +13,16 @@ header {
 
 .nav-wrapper {
     display: none;
+}
+
+#menu {
+    display: flex;
+    text-align: center;
+}
+
+img.atlas {
+    width: 10%;
+    height: 10%;
 }
 
 /* main content */
