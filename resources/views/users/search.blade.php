@@ -14,10 +14,11 @@
   <td><img src="/storage/{{ $user->images }}">
   {{$user->username}}
 
+
   <!-- <form action="{{ route('follow', [$user->id]) }}" method="POST">
   {{ csrf_field() }}
   <button type="submit" class="btn btn-primary">フォローする</button>
-  </form>
+</form>
   <form action="{{ route('unfollow', [$user->id]) }}" method="POST">
   {{ csrf_field() }}
   {{ method_field('DELETE') }}
