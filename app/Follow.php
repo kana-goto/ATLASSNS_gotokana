@@ -12,4 +12,6 @@ class Follow extends Model
 
     protected $table = 'follows';
 
+
+
 }
