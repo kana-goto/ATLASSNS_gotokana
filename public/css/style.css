@@ -69,3 +69,62 @@ img.atlas {
     transform: translate(-50%, -50%);
     width: 60%;
 }
+
+/* top */
+li {
+    list-style: none;
+    border-bottom: 1px solid #000;
+    display: flex;
+    padding-left: 100px;
+}
+
+.post-block2 {
+    list-style: none;
+    border-bottom: 7px solid #C0C0C0;
+    display: flex;
+    padding: 40px;
+}
+
+.post-content {
+    width: 100%;
+    padding: 15px;
+}
+
+.post-content>div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-name {
+    margin-bottom: 10px;
+}
+
+.form-group {
+    margin-bottom: 50px;
+
+}
+
+.form {
+    border: none;
+    width: 800px;
+    height: 50px;
+}
+
+.post {
+    display: block;
+    margin-left: auto;
+    background: #fff;
+    border: none;
+
+}
+
+img.post-btn {
+    width: 30%;
+    height: 30%;
+
+}
+
+img.post-btn2 {
+    width: 20%;
+    height: 20%;
+}

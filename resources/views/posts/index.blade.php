@@ -1,27 +1,50 @@
 @extends('layouts.login')
 
 @section('content')
- {!! Form::open(['url' => 'post/create']) !!}
+<li class="post-block2">
+
+  <figure><?php $user = Auth::user(); ?><img src="/storage/{{ $user->images }}"></figure>
+
+    {!! Form::open(['url' => 'post/create']) !!}
  <div class="form-group">
-   {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => '投稿内容を入力してください。']) !!}
+   {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form', 'placeholder' => '投稿内容を入力してください。']) !!}
  </div>
- <button type="submit" class="btn btn-success pull-right">投稿ボタン</button>
+ <button type="submit" class="post"><img src="images/post.png" class="post-btn"></button>
+
  {!! Form::close() !!}
- <table>
- @foreach ($posts as $post)
-            <tr>
-                <td><img src="/storage/{{ $post->user->images }}"></td>
-                <td>{{ $post->user->username}}</td>
-                <td>{{ $post->post }}</td>
-                <td>{{ $post->updated_at }}</td>
-            </tr>
+
+
+</li>
+
+
+
+
+@foreach ($posts as $post)
+
+<ul>
+  <li class="post-block">
+    <figure><img src="/storage/{{ $post->user->images }}"></figure>
+    <div class="post-content">
+      <div>
+        <div class="post-name">{{ $post->user->username}}</div>
+        <div>{{ $post->updated_at }}</div>
+      </div>
+      <div>
+        <div>{{ $post->post }}</div>
+        <div>
+          @if (Auth::user()->id == $post->user_id)
             <div class="content">
-              <!-- 投稿の編集ボタン -->
-              <a class="js-modal-open" href="/top" post="{{ $post->post }}" post_id="{{ $post->user_id }}">編集</a>
-              <a class="delate" href="/post/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
+              <a class="js-modal-open" href="/top" post="{{ $post->user->post }}" post_id="{{ $post->user->user_id }}"><img src="images/edit.png" class="post-btn2"></a>
+              <a class="delate" href="/post/{{$post->user->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" class="post-btn2"></a>
             </div>
+            @endif
+        </div>
+      </div>
+  </li>
+</ul>
+
  @endforeach
-</table>
+
 
    <!-- モーダルの中身 -->
     <div class="modal js-modal">

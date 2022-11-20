@@ -19,8 +19,11 @@ class PostsController extends Controller
     }
 
     public function index(){
-        $following_id = Auth::user()->follows()->pluck('followed_id');
-        $posts = Post::with('user')->whereIn('user_id', $following_id)->get();
+        // $following_id = Auth::user()->follows()->pluck('followed_id');
+        // $posts = Post::with('user')->whereIn('user_id', $following_id)->get();
+        // $users = Auth::user()->get();
+
+        $posts = Post::query()->whereIn('user_id', Auth::user()->follows()->pluck('followed_id'))->orWhere('user_id', Auth::user()->id)->latest()->get();
 
         return view('posts.index', compact('posts'));
     }
@@ -28,13 +31,13 @@ class PostsController extends Controller
 
     public function create(Request $request)
     {
-        $data = $request->all();
+        $data = $request->input();
         $post = $request->input('newPost');
+        $validator=$this->validator($data);
 
-        // $validator=$this->validator($data);
-        // if($validator->fails()){
-        //     return redirect('/top')->withErrors($validator)->withInput();
-        // }
+        if($validator->fails()){
+            return redirect('/top')->withErrors($validator)->withInput();
+        }
 
 
         $user_id = auth()->id();
@@ -53,10 +56,10 @@ class PostsController extends Controller
         $id = $request->input('id');
         $up_post = $request->input('upPost');
 
-        //  $validator=$this->validator($data);
-        // if($validator->fails()){
-        //     return redirect('/top')->withErrors($validator)->withInput();
-        // }
+         $validator=$this->validator($data);
+        if($validator->fails()){
+            return redirect('/top')->withErrors($validator)->withInput();
+        }
 
         \DB::table('posts')
         ->where('id', $id)
