@@ -1,4 +1,6 @@
+//ハンバーガー
 $('.menu-trigger').click(function () {
+  $(this).toggleClass('active');
   $('.nav-wrapper').slideToggle();
 });
 

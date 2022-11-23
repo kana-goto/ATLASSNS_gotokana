@@ -7,38 +7,114 @@ html {}
 body {}
 
 /* header */
+
 header {
+
     background: #186AC9;
+    height: 100px;
+
 }
 
-.nav-wrapper {
-    display: none;
-}
+#head {}
 
-#menu {
-    display: flex;
-    text-align: center;
-}
 
 img.atlas {
     width: 10%;
     height: 10%;
+    padding: 10px 10px;
 }
 
-/* main content */
+/* ハンバーガーメニュー */
+#menu {}
+
+.auth {
+    color: #fff;
+    font-size: 20pt;
+}
+
+.menu-trigger {
+    position: absolute;
+    top: 20px;
+    right: 5px;
+    height: 100px;
+    width: 20%;
+}
+
+.menu-trigger.active p i {
+    transform: rotate(-180deg);
+}
+
+.nav-wrapper {
+    display: none;
+    background: #fff;
+    border-left: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+
+
+.nav-wrapper ul li {
+    display: block;
+    flex-basis: 20%;
+    text-align: center;
+    color: #fff;
+    padding: 30px 10px;
+}
+
+.link {
+    background: #000080;
+}
+
+
+
+
+/* side bar */
+
 #row {
     display: flex;
     flex-flow: row wrap;
 }
 
-#container {
-    flex: 0 0 80%;
+#confirm {
+    border-bottom: 1px solid #C0C0C0;
 }
 
 #side-bar {
     flex: 0 0 19%;
     border-left: 1px solid #727272;
 }
+
+.name {
+    padding: 10px 20px;
+}
+
+.contents {
+    overflow: hidden;
+}
+
+.item {
+    float: left;
+    padding: 20px 30px;
+    text-align: center;
+}
+
+.btn-list {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: right;
+}
+
+.btn-search {
+    margin-top: 30px;
+    text-align: center
+}
+
+/* main content */
+
+
+#container {
+    flex: 0 0 80%;
+}
+
 
 .content {
     margin: 0 auto;
@@ -73,7 +149,7 @@ img.atlas {
 /* top */
 li {
     list-style: none;
-    border-bottom: 1px solid #000;
+    border-bottom: 1px solid #C0C0C0;
     display: flex;
     padding-left: 100px;
 }
