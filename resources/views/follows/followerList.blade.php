@@ -1,20 +1,28 @@
 @extends('layouts.login')
 
 @section('content')
-Follower List
-@foreach($users as $user)
-<img src="/storage/{{ $user->images }}">
+<li class="post-block2">
+  <h2>Follower List</h2>
+  @foreach($users as $user)
+  <figure><img src="/storage/{{ $user->images }}"></figure>
+  @endforeach
+</li>
+
+
+@foreach($posts as $post)
+<ul>
+  <li class="post-block">
+    <figure><a href="/users/{{ $post->user->id }}/user_profile"><img src="/storage/{{ $post->user->images }}"></a></figure>
+    <div class="post-content">
+      <div>
+        <div class="post-name">{{ $post->user->username}}</div>
+        <div>{{ $post->updated_at }}</div>
+      </div>
+      <div>{{ $post->post }}</div>
+    </div>
+  </li>
+</ul>
+
 @endforeach
 
-<table>
-@foreach($posts as $post)
-<tr>
-  <td><a href="/users/{{ $post->user->id }}/user_profile"><img src="/storage/{{ $post->user->images }}"></a>
-  {{$post->user->username}}
-  {{$post->post}}
-  {{$post->user->updated_at}}
-</td>
-</tr>
-@endforeach
-</table>
 @endsection

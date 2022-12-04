@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use Auth;
-use Illuminate\Support\Facades\Validator;
+use Validator;
 
 class PostsController extends Controller
 {
@@ -31,14 +31,14 @@ class PostsController extends Controller
 
     public function create(Request $request)
     {
-        $data = $request->input();
         $post = $request->input('newPost');
-        $validator=$this->validator($data);
 
+        $validator = Validator::make($request->all(), [
+            'newPost' => 'required|string|min:1|max:200',
+            ]);
         if($validator->fails()){
             return redirect('/top')->withErrors($validator)->withInput();
         }
-
 
         $user_id = auth()->id();
         \DB::table('posts')->insert([
@@ -52,17 +52,20 @@ class PostsController extends Controller
 
     public function update(Request $request)
     {
-        $data = $request->all();
         $id = $request->input('id');
         $up_post = $request->input('upPost');
 
-         $validator=$this->validator($data);
+        $validator = Validator::make($request->all(), [
+            'upPost' => 'required|string|min:1|max:200',
+            ]);
+
         if($validator->fails()){
             return redirect('/top')->withErrors($validator)->withInput();
         }
 
+
         \DB::table('posts')
-        ->where('id', $id)
+        ->where('user_id', $id)
         ->update(
              ['post' => $up_post]
               );

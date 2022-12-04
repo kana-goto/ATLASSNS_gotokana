@@ -34,8 +34,8 @@
         <div>
           @if (Auth::user()->id == $post->user_id)
             <div class="content">
-              <a class="js-modal-open" href="/top" post="{{ $post->user->post }}" post_id="{{ $post->user->user_id }}"><img src="images/edit.png" class="post-btn2"></a>
-              <a class="delate" href="/post/{{$post->user->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" class="post-btn2"></a>
+              <a class="js-modal-open" href="/top" post="{{ $post->post }}" post_id="{{ $post->user->id }}"><img src="images/edit.png" class="post-btn2"></a>
+              <a class="delate" href="/post/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" class="post-btn2"></a>
             </div>
             @endif
         </div>
@@ -51,12 +51,11 @@
         <div class="modal__bg js-modal-close"></div>
         <div class="modal__content">
            <form action="{{ url('post/update')}}" method="post">
-                <textarea name="upPost" class="modal_post"></textarea>
+                <textarea name="upPost" class="modal_post" cols="80" rows="5" ></textarea>
                 <input type="hidden" name="id" class="modal_id" value="更新">
-                <input type="submit" value="更新">
+                <input type ="image" name="submit" width="40" height="40" src="images/edit.png">
                 {{ csrf_field() }}
            </form>
-           <a class="js-modal-close" href="/top">閉じる</a>
         </div>
     </div>
 
