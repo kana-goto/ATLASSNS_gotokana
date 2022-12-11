@@ -19,9 +19,6 @@ class PostsController extends Controller
     }
 
     public function index(){
-        // $following_id = Auth::user()->follows()->pluck('followed_id');
-        // $posts = Post::with('user')->whereIn('user_id', $following_id)->get();
-        // $users = Auth::user()->get();
 
         $posts = Post::query()->whereIn('user_id', Auth::user()->follows()->pluck('followed_id'))->orWhere('user_id', Auth::user()->id)->latest()->get();
 
@@ -65,7 +62,7 @@ class PostsController extends Controller
 
 
         \DB::table('posts')
-        ->where('user_id', $id)
+        ->where('id', $id)
         ->update(
              ['post' => $up_post]
               );

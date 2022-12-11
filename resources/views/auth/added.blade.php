@@ -3,14 +3,20 @@
 @section('content')
 
 <div id="clear">
-  @if (Session::has('username'))
+  <div>
+    @if (Session::has('username'))
     <p>{{ session('username') }}さん</p>
-@endif
-  <p>ようこそ！AtlasSNSへ！</p>
-  <p>ユーザー登録が完了しました。</p>
-  <p>早速ログインをしてみましょう。</p>
-
-  <p class="btn"><a href="/login">ログイン画面へ</a></p>
+    @endif
+    <p>ようこそ！AtlasSNSへ！</p>
+  </div>
+  <div class='message'>
+    <p>ユーザー登録が完了しました。</p>
+    <p>早速ログインをしてみましょう。</p>
+  </div>
+  <div>
+    <p class='login-btn'><a href="/login">ログイン画面へ</a></p>
+  </div>
 </div>
+
 
 @endsection

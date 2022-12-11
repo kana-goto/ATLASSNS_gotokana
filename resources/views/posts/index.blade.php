@@ -29,17 +29,16 @@
         <div class="post-name">{{ $post->user->username}}</div>
         <div>{{ $post->updated_at }}</div>
       </div>
+      <div>{{ $post->post }}</div>
       <div>
-        <div>{{ $post->post }}</div>
-        <div>
           @if (Auth::user()->id == $post->user_id)
             <div class="content">
-              <a class="js-modal-open" href="/top" post="{{ $post->post }}" post_id="{{ $post->user->id }}"><img src="images/edit.png" class="post-btn2"></a>
-              <a class="delate" href="/post/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" class="post-btn2"></a>
+              <a class="js-modal-open" href="/top" post="{{ $post->post }}" post_id="{{ $post->id }}"><img src="images/edit.png" class="post-btn2"></a>
+              <a class="delate" href="/post/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="images/trash.png" class="post-btn2" ></a>
             </div>
             @endif
-        </div>
       </div>
+    </div>
   </li>
 </ul>
 
