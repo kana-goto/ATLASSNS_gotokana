@@ -51,18 +51,20 @@ img.atlas {
     border-left: 1px solid #727272;
     border-bottom: 1px solid #727272;
     width: 100%;
-    text-align: left;
 }
 
 
-.nav-wrapper ul li {
+.nav-wrapper li {
     display: block;
     text-align: center;
     color: #fff;
     padding: 30px 0px;
     border-bottom: none;
     width: 100%;
+}
 
+.nav-wrapper2 {
+    padding-left: 0;
 }
 
 .nav-wrapper a {

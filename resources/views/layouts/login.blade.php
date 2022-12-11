@@ -32,7 +32,7 @@
                     <p class="auth"><?php $user = Auth::user(); ?>{{ $user->username }}  さん  <i class="fa fa-angle-down"></i>  <img src="/storage/{{ $user->images }}"></p>
                 <div>
                 <div class="nav-wrapper">
-                  <ul>
+                  <ul class='nav-wrapper2'>
                     <li ><a href="/top">HOME</a></li>
                     <li class="link"><a href="/profile">プロフィール編集</a></li>
                     <li ><a href="/logout">ログアウト</a></li>
