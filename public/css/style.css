@@ -205,10 +205,39 @@ li {
     margin-bottom: 10px;
 }
 
-.form-group {
-    margin-bottom: 50px;
-
+.post-post {
+    margin-right: 150px;
 }
+
+.form-group {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-name {
+    padding-right: 30px;
+}
+
+.form-image {
+    margin-left: 180px;
+    margin-top: 20px;
+}
+
+.update {
+    color: #fff;
+    background-color: #FF3366;
+    width: 100px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    margin-left: 100px;
+    border-radius: 10px;
+    text-align: center;
+    border: 0px;
+    font-size: 10pt;
+    padding: 10px 20px;
+}
+
 
 .form {
     border: none;

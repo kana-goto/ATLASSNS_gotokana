@@ -36,9 +36,11 @@ class UsersController extends Controller
         $user->bio = $request->input('bio');
 
 
-        $originalImg = $request->images;
-        $filePath = $originalImg->store('public');
-        $user->images = str_replace('public/', '', $filePath);
+        if(isset($request->images)){
+            $originalImg = $request->images;
+            $filePath = $originalImg->store('public');
+            $user->images = str_replace('public/', '', $filePath);
+        }
 
 
         $validator=$this->validator($data);
@@ -55,12 +57,11 @@ class UsersController extends Controller
 
 
     public function search(Request $request){
-        $users = User::all();
         $search = $request->input('search');
-        $query = User::query();
         if ($search){
             $query = User::query();
-            $users = $query->where('username', 'like', '%'.$search.'%')->get();;
+            $query->where("id" , "!=" , Auth::user()->id)->paginate(10);
+            $users = $query->where('username', 'like', '%'.$search.'%')->get();
         }
         return view('users.search')
         ->with([
@@ -70,7 +71,7 @@ class UsersController extends Controller
     }
 
     public function index() {
-        $users = User::all();
+        $users = User::where("id" , "!=" , Auth::user()->id)->paginate(10);
         return view('users.search')->with('users', $users);
     }
 }

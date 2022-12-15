@@ -29,7 +29,7 @@
         <div class="post-name">{{ $post->user->username}}</div>
         <div>{{ $post->updated_at }}</div>
       </div>
-      <div>{{ $post->post }}</div>
+      <div class='post-post'>{{ $post->post }}</div>
       <div>
           @if (Auth::user()->id == $post->user_id)
             <div class="content">
