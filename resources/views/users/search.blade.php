@@ -20,7 +20,7 @@
 @foreach($users as $user)
 <ul>
   <li class="post-block3">
-    <figure><a href="/users/{{ $user->id }}/user_profile"><img src="/storage/{{ $user->images }}"></a></figure>
+    <figure><a href="/users/{{ $user->id }}/user_profile"><img src="/storage/{{ $user->images }}" class='user-icon'></a></figure>
     {{$user->username}}
     <div class="d-flex justify-content-end flex-grow-1">
     @if (auth()->user()->isFollowing($user->id))

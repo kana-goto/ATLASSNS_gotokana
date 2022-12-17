@@ -2,7 +2,7 @@
 
 @section('content')
 <ul>
-  <figure class='form-image'><?php $user = Auth::user(); ?><img src="/storage/{{ $user->images }}"></figure>
+  <figure class='form-image'><?php $user = Auth::user(); ?><img src="/storage/{{ $user->images }}" class='user-icon'></figure>
   <li class="post-block3">
     {!! Form::open(['url' => '/profile','method' => 'post', 'files' => true]) !!}
     <div class="form-group">

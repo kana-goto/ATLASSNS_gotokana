@@ -291,3 +291,8 @@ h2 {
 .word {
     padding-left: 100px;
 }
+
+.user-icon {
+    width: 64px;
+    height: 64px;
+}

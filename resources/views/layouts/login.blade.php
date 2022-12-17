@@ -29,7 +29,7 @@
             <h1><a href="/top"><img src="images/atlas.png" class = "atlas"></a></h1>
             <div id="memu">
                 <div class="menu-trigger">
-                    <p class="auth"><?php $user = Auth::user(); ?>{{ $user->username }}  さん  <i class="fa fa-angle-down"></i>  <img src="/storage/{{ $user->images }}"></p>
+                    <p class="auth"><?php $user = Auth::user(); ?>{{ $user->username }}  さん  <i class="fa fa-angle-down"></i>  <img src="/storage/{{ $user->images }}" class='user-icon'></p>
                 <div>
                 <div class="nav-wrapper">
                   <ul class='nav-wrapper2'>

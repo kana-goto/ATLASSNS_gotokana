@@ -3,13 +3,13 @@
 @section('content')
 <li class="post-block2">
 
-  <figure><?php $user = Auth::user(); ?><img src="/storage/{{ $user->images }}"></figure>
+  <figure><?php $user = Auth::user(); ?><img src="/storage/{{ $user->images }}" class='user-icon'></figure>
 
     {!! Form::open(['url' => 'post/create']) !!}
  <div class="form-group">
    {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form', 'placeholder' => '投稿内容を入力してください。']) !!}
  </div>
- <button type="submit" class="post"><img src="images/post.png" class="post-btn"></button>
+ <button type="submit" class="post"><img src="images/post.png" class="post-btn" ></button>
 
  {!! Form::close() !!}
 
@@ -23,7 +23,7 @@
 
 <ul>
   <li class="post-block">
-    <figure><img src="/storage/{{ $post->user->images }}"></figure>
+    <figure><img src="/storage/{{ $post->user->images }}" class='user-icon'></figure>
     <div class="post-content">
       <div>
         <div class="post-name">{{ $post->user->username}}</div>

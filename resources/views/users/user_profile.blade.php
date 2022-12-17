@@ -3,7 +3,7 @@
 @section('content')
 @foreach($users as $user)
 <li class="post-block2">
-  <figure><img src="/storage/{{ $user->images }}"></figure>
+  <figure><img src="/storage/{{ $user->images }}" class='user-icon'></figure>
   <div class="post-content2">
     <div>
       <div class="user-name">name</div>
@@ -34,13 +34,13 @@
 @foreach($posts as $post)
 <ul>
   <li class="post-block">
-    <figure><img src="/storage/{{ $post->user->images }}"></figure>
+    <figure><img src="/storage/{{ $post->user->images }}" class='user-icon'></figure>
     <div class="post-content">
       <div>
         <div>{{$post->user->username}}</div>
         <div>{{$post->user->updated_at}}</div>
       </div>
-      <div>{{$post->post}}</div>
+      <div class='post-post'>{{$post->post}}</div>
     </div>
   </li>
 </ul>
